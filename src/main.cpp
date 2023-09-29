@@ -4,9 +4,7 @@
 #include <charge.h>
 #include <display.h>
 #include <safety.h>
-#include <webbrowser.h>
-#include <weather.h>
-#include <time_date.h>
+#include <request.h>
 
 int current_hour = 0;
 int current_min = 0;
@@ -17,11 +15,10 @@ int current_year = 0;
 int status = 0;
 
 void setup(){
-    setup_webbrwoser(&current_hour, &current_min, &current_sec, &current_day, &current_month, &current_year, &status);
+    setup_wifi();
 
 }
 void loop(){
-    get_time_date(&current_hour, &current_min, &current_sec, &current_day, &current_month, &current_year);
-    set_date_time();
+    get_time_date();
     delay(1000);
 }
