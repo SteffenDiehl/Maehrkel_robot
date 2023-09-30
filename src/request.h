@@ -49,8 +49,6 @@ String httpGETRequest(const char* server_request) {
 }
 
 void setup_wifi() {
-
-  Serial.begin(115200);
   // Initialize SPIFFS
   #ifdef ESP32
     if(!SPIFFS.begin(true)){
