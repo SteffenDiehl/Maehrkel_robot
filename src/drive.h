@@ -1,9 +1,9 @@
 #include <Arduino.h>
 
-const int forward_L = 36;
-const int backward_L = 39;
-const int forward_R = 34;
-const int backward_R = 35;
+const int forward_L = 25;
+const int backward_L = 26;
+const int forward_R = 27;
+const int backward_R = 14;
 
 void setup_drive() {
     pinMode(forward_L, OUTPUT); // Sets thePin as an OUTPUT
@@ -14,7 +14,14 @@ void setup_drive() {
 
 void drive_now() {
     digitalWrite(forward_L, HIGH);
-    digitalWrite(backward_L, HIGH);
+    digitalWrite(backward_L, LOW);
     digitalWrite(forward_R, HIGH);
+    digitalWrite(backward_R, LOW);
+}
+
+void stop_now() {
+    digitalWrite(forward_L, LOW);
+    digitalWrite(backward_L, HIGH);
+    digitalWrite(forward_R, LOW);
     digitalWrite(backward_R, HIGH);
 }

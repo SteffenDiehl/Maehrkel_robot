@@ -9,7 +9,7 @@
 
 Arduino_ESP32SPI bus = Arduino_ESP32SPI(TFT_DC, TFT_CS, TFT_SCK, TFT_MOSI, TFT_MISO);
 Arduino_ILI9341 display = Arduino_ILI9341(&bus, TFT_RESET);
-String myStatus[] = {"RUN", "STOP", "GO HOME"};
+String myStatus[] = {"RUN", "GO HOME", "STOP"};
 
 void setup_display(void)
 {
@@ -18,14 +18,16 @@ void setup_display(void)
     display.fillScreen(GREEN);
     display.fillRect(0, 0, 320, 100, DARKGREEN);
     display.setCursor(20, 20);
-    display.setTextSize(2.8);
     display.setTextColor(BLACK);
 }
 void display_output(float cDistance, String cDate, String cTime, int cStatus){
     display.fillScreen(GREEN);
-    display.fillRect(0, 0, 320, 100, DARKGREEN);
-    display.setCursor(15, 15);
+    display.fillRect(0, 0, 320, 40, DARKGREEN);
+    display.setCursor(12, 12);
+    display.setTextSize(3.5);
     display.println("Maehrkel");
+    display.setTextSize(2.8);
+    display.setCursor(0, 50);
     display.println("IP: 192.168.178.25");
     display.println("Date: " + cDate);
     display.println("Time: " + cTime);

@@ -18,6 +18,8 @@ String current_Date;
 String current_Time;
 int Status = 0;
 float current_distance = 0;
+int state_emergency = 1;
+int state_bumper = 1;
 
 void setup(){
     Serial.begin(115200);
@@ -31,6 +33,12 @@ void loop(){
     get_data(&current_Date, &current_Time, &Status);
     get_distance(&current_distance);
     display_output(current_distance, current_Date, current_Time, Status);
-    drive_now();
+    // get_safety(&state_emergency, &state_bumper);
+    if (Status == 0 && state_bumper == 1 && state_emergency == 1){
+        drive_now();
+    }
+    else{
+        stop_now();
+    }
     delay(1000);
 }
