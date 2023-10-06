@@ -1,17 +1,7 @@
-/*********
-    Rui Santos
-    Complete project details at https://RandomNerdTutorials.com/esp32-hc-sr04-ultrasonic-arduino/
-
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files.
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-*********/
 #include <Arduino.h>
 
 const int trigPin = 5;
-const int echoPin = 18;
+const int echoPin = 32;
 
 //define sound speed in cm/uS
 #define SOUND_SPEED 0.034
@@ -24,7 +14,7 @@ void setup_HCSR04() { // Starts the serial communication
   pinMode(echoPin, INPUT); // Sets the echoPin as an Input
 }
 
-void get_distance() {
+void get_distance(float *cdistance) {
   // Clears the trigPin
     digitalWrite(trigPin, LOW);
     delayMicroseconds(2);
@@ -42,6 +32,7 @@ void get_distance() {
   // Prints the distance in the Serial Monitor
     Serial.print("Distance (cm): ");
     Serial.println(distanceCm);
+    *cdistance = distanceCm; 
     
     delay(1000);
 }

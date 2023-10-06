@@ -18,6 +18,10 @@ const char* serverDate = "http://192.168.178.26/Date";
 String Time = "";
 const char* serverTime = "http://192.168.178.26/Time";
 
+String str_Status = "";
+int sStatus = 0;
+const char* serverStatus = "http://192.168.178.26/Status";
+
 int *web_status = nullptr;
 
 String httpGETRequest(const char* server_request) {
@@ -72,12 +76,17 @@ void setup_wifi() {
   Serial.print("IP Address: ");
   Serial.println(WiFi.localIP());
 }
-void get_time_date() {
+void get_data(String* cDate, String* cTime, int* cStatus) {
   if(WiFi.status()== WL_CONNECTED ){ 
     Date = httpGETRequest(serverDate);
     Time = httpGETRequest(serverTime);
+    str_Status = httpGETRequest(serverStatus);
+    sStatus = atoi(str_Status.c_str());
     Serial.println("Time: " + Time + " - Date: " + Date);
-    
+    *cDate = Date;
+    *cTime = Time;
+    *cStatus = sStatus;
+
     // save the last HTTP GET Request
   }
   else {
