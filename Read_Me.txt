@@ -1,5 +1,5 @@
 This is the robot's operational program.
-
+Also see "Projektarbeit".
 Address
 staticIP(192, 168, 178, 25);    //IP-addresse
 gateway(192, 168, 178, 1);      //gateway
