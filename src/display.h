@@ -25,7 +25,7 @@ void display_output(float cDistance, String cDate, String cTime, int cStatus){
     display.fillRect(0, 0, 320, 40, DARKGREEN);
     display.setCursor(12, 12);
     display.setTextSize(3.5);
-    display.println("Maehrkel");
+    display.println("Maehrkel_Robot");
     display.setTextSize(2.8);
     display.setCursor(0, 50);
     display.println("IP: 192.168.178.25");
