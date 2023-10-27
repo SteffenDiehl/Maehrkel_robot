@@ -7,13 +7,8 @@
 #include <request.h>
 #include <distance.h>
 #include <drive.h>
+#include <cut.h>
 
-// int current_hour = 0;
-// int current_min = 0;
-// int current_sec = 0;
-// int current_day = 0;
-// int current_month = 0;
-// int current_year = 0;
 String current_Date;
 String current_Time;
 int Status = 0;
@@ -28,6 +23,7 @@ void setup(){
     setup_display();
     setup_drive();
     setup_safety();
+    setup_cut();
 }
 void loop(){
     get_data(&current_Date, &current_Time, &Status);
@@ -36,9 +32,11 @@ void loop(){
     // get_safety(&state_emergency, &state_bumper);
     if (Status == 0 && state_bumper == 1 && state_emergency == 1){
         drive_now();
+        cut_now();
     }
     else{
         stop_now();
+        stop_cut();
     }
     delay(1000);
 }
