@@ -11,7 +11,7 @@
 
 String current_Date;
 String current_Time;
-int Status = 0;
+int Status = 0; // 0 == "RUN", 1 ==  "GO HOME", 2 == "STOP"
 float current_distance = 0;
 int state_emergency = 1;
 int state_bumper = 1;
@@ -31,12 +31,19 @@ void loop(){
     display_output(current_distance, current_Date, current_Time, Status);
     // get_safety(&state_emergency, &state_bumper);
     if (Status == 0 && state_bumper == 1 && state_emergency == 1){
-        drive_now();
-        cut_now();
+        drive_forward();
+        cut_start();
+    }
+    else if (Status == 1 && state_bumper == 1 && state_emergency == 1){
+        drive_backwards();
+        delay(1000);
+        drive_turn();
+        delay(1000);
+        drive_forward();
     }
     else{
-        stop_now();
-        stop_cut();
+        drive_stop();
+        cut_stop();
     }
-    delay(1000);
+    //delay(1000);
 }

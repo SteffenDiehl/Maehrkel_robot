@@ -6,10 +6,10 @@ void setup_cut() {
     pinMode(cut_pin, OUTPUT); // Sets thePin as an OUTPUT
 }
 
-void cut_now() {
+void cut_start() {
     digitalWrite(cut_pin, HIGH);
 }
 
-void stop_cut() {
+void cut_stop() {
     digitalWrite(cut_pin, LOW);
 }

@@ -12,16 +12,30 @@ void setup_drive() {
     pinMode(backward_R, OUTPUT);
 }
 
-void drive_now() {
+void drive_forward() {
     digitalWrite(forward_L, HIGH);
     digitalWrite(backward_L, LOW);
     digitalWrite(forward_R, HIGH);
     digitalWrite(backward_R, LOW);
 }
 
-void stop_now() {
+void drive_backwards() {
     digitalWrite(forward_L, LOW);
     digitalWrite(backward_L, HIGH);
     digitalWrite(forward_R, LOW);
     digitalWrite(backward_R, HIGH);
+}
+
+void drive_turn() {
+    digitalWrite(forward_L, HIGH);
+    digitalWrite(backward_L, LOW);
+    digitalWrite(forward_R, LOW);
+    digitalWrite(backward_R, HIGH);
+}
+
+void drive_stop() {
+    digitalWrite(forward_L, LOW);
+    digitalWrite(backward_L, LOW);
+    digitalWrite(forward_R, LOW);
+    digitalWrite(backward_R, LOW);
 }
