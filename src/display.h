@@ -20,7 +20,7 @@ void setup_display(void)
     display.fillRect(0, 0, 320, 40, DARKGREEN);
     display.setCursor(12, 12);
     display.setTextSize(3.5);
-    display.println("Maehrkel_Station");
+    display.println("Maehrkel_Station_Robot");
     display.fillRect(0, 40, 320, 200, GREEN);
     display.setTextSize(2.8);
     display.setCursor(0, 50);
