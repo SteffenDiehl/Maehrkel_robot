@@ -35,11 +35,11 @@ void loop(){
     display_output(current_distance, current_Date, current_Time, Status);
     // get_safety(&state_emergency, &state_bumper);
     if (Status == 0 && state_bumper == 1 && state_emergency == 1){
-        drive_forward();
+        //drive_forward();
         cut_start();
     }
     else if (Status == 1 && state_bumper == 1 && state_emergency == 1){
-        drive_backwards();
+        //drive_backwards();
         // delay(1000);
         // drive_turn();
         // delay(1000);

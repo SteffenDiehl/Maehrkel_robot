@@ -9,9 +9,9 @@
 // Create an array to hold the LED data
 CRGB leds[NUM_LEDS];
 CRGB colors[] = {
-    CRGB::Green,
-    CRGB::Orange,
-    CRGB::Red,
+    CRGB(0, 255, 0),//Green
+    CRGB(255, 100, 0),//Orange
+    CRGB(255, 0, 0),//Red
     // Add more colors as needed
 };
 
