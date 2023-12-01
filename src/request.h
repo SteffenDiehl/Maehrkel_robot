@@ -4,23 +4,25 @@
 #include <HTTPClient.h>
 #include <Wire.h>
 
-const char* ssid = "DiehlWithIt";
-const char* password = "DiehlWithIt";
+const char* ssid = "JustDiehlWithIt";
+const char* password = "DiehlWithIt09";
 
-IPAddress staticIP(192, 168, 43, 69); // Die gewünschte IP-Adresse
-IPAddress gateway(192, 168, 43, 1);    // Das Gateway
+IPAddress staticIP(192, 168, 178, 27); // Die gewünschte IP-Adresse
+IPAddress gateway(192, 168, 178, 1);    // Das Gateway
 IPAddress subnet(255, 255, 255, 0);   // Die Subnetzmaske
 IPAddress dns(8, 8, 8, 8);
 
+String Host_IP = "192.169.178.26";
+
 String Date = "";
-const char* serverDate = "http://192.168.43.68/Date";
+const char* serverDate = "http://192.169.178.26/Date";
 
 String Time = "";
-const char* serverTime = "http://192.168.43.68/Time";
+const char* serverTime = "http://192.169.178.26/Time";
 
 String str_Status = "";
-int sStatus = 0;
-const char* serverStatus = "http://192.168.43.68/Status";
+int sStatus = 2;
+const char* serverStatus = "http://192.169.178.26/Status";
 
 int *web_status = nullptr;
 
@@ -41,7 +43,7 @@ String httpGETRequest(const char* server_request) {
     Serial.println(httpResponseCode);
     payload = http.getString();
   }
-  else if (server_request == "http://192.168.43.68/Status")
+  else if (server_request == serverStatus)
   {
     payload = "2";
   }

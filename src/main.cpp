@@ -8,10 +8,12 @@
 #include <distance.h>
 #include <drive.h>
 #include <cut.h>
+#include <pwm.h>
+#include <ledTape.h>
 
 String current_Date;
 String current_Time;
-int Status = 0; // 0 == "RUN", 1 ==  "GO HOME", 2 == "STOP"
+int Status = 2; // 0 == "RUN", 1 ==  "GO HOME", 2 == "STOP"
 float current_distance = 0;
 int state_emergency = 1;
 int state_bumper = 1;
@@ -21,13 +23,15 @@ void setup(){
     setup_wifi();
     setup_HCSR04();
     setup_display();
-    setup_drive();
+    //setup_drive();
     setup_safety();
     setup_cut();
+    setup_pwm();
+    setup_led();
 }
 void loop(){
     get_data(&current_Date, &current_Time, &Status);
-    get_distance(&current_distance);
+    //get_distance(&current_distance);
     display_output(current_distance, current_Date, current_Time, Status);
     // get_safety(&state_emergency, &state_bumper);
     if (Status == 0 && state_bumper == 1 && state_emergency == 1){
@@ -36,14 +40,16 @@ void loop(){
     }
     else if (Status == 1 && state_bumper == 1 && state_emergency == 1){
         drive_backwards();
-        delay(1000);
-        drive_turn();
-        delay(1000);
-        drive_forward();
+        // delay(1000);
+        //drive_turn();
+        // delay(1000);
+        // drive_forward();
     }
     else{
         drive_stop();
         cut_stop();
     }
+    pwm();
+    led_on(Status);
     //delay(1000);
 }
