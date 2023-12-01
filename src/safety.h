@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
-const int emergency = 13;
-const int bumper = 12;
+const int emergency = 0;
+const int bumper = 2;
 
 void setup_safety() {
     pinMode(emergency, INPUT); // Sets thePin as an INPUT

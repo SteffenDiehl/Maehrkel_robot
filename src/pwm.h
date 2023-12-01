@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
-const int LED1 = 14;
-const int LED2 = 27;
+const int LED1 = 33;
+const int LED2 = 34;
 
 
 // setting PWM properties
