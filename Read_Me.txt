@@ -1,7 +1,7 @@
 This is the robot's operational program.
-Also see "Projektarbeit".
+Also see "Maehrkel_station".
 Address
-staticIP(192, 168, 178, 25);    //IP-addresse
+staticIP(192, 168, 178, 27);    //IP-addresse
 gateway(192, 168, 178, 1);      //gateway
 subnet(255, 255, 255, 0);       //subnetz mask
 dns(8, 8, 8, 8);                //DNS
