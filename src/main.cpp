@@ -40,10 +40,10 @@ void loop(){
     }
     else if (Status == 1 && state_bumper == 1 && state_emergency == 1){
         drive_backwards();
-        delay(1000);
-        drive_turn();
-        delay(1000);
-        drive_forward();
+        // delay(1000);
+        // drive_turn();
+        // delay(1000);
+        // drive_forward();
     }
     else{
         drive_stop();
