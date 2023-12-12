@@ -8,7 +8,6 @@
 #include <distance.h>
 #include <drive.h>
 #include <cut.h>
-#include <pwm.h>
 #include <ledTape.h>
 #include <boundary.h>
 
@@ -29,7 +28,6 @@ void setup(){
     setup_drive();
     setup_safety();
     setup_cut();
-    setup_pwm();
     setup_led();
     setup_boundary();
 }
@@ -54,7 +52,6 @@ void loop(){
         drive_stop();
         cut_stop();
     }
-    pwm();
     led_on(Status);
     //delay(1000);
 }
