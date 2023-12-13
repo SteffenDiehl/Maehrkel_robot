@@ -15,23 +15,6 @@ CRGB colors[] = {
     // Add more colors as needed
 };
 
-void setup_led() {
-  // Initialize FastLED library
-    FastLED.addLeds<WS2812, DATA_PIN, GRB>(leds, NUM_LEDS);
-}
-
-void led_on(int status) {
-    // Fill the entire strip with a color
-    fill_solid(leds, NUM_LEDS, colors[status]);
-
-    // Show the changes on the strip
-    FastLED.show();
-}
-void led_off(){
-    // Clear the strip
-    fill_solid(leds, NUM_LEDS, CRGB::Black);
-    FastLED.show();
-}
 // CRGB::Black         // RGB(0, 0, 0)
 // CRGB::White         // RGB(255, 255, 255)
 // CRGB::Red           // RGB(255, 0, 0)
@@ -55,3 +38,21 @@ void led_off(){
 // CRGB::DarkGray      // RGB(169, 169, 169)
 // CRGB::MediumGray    // RGB(128, 128, 128)
 // CRGB::LightGray     // RGB(211, 211, 211)
+
+void setup_led() {
+  // Initialize FastLED library
+    FastLED.addLeds<WS2812, DATA_PIN, GRB>(leds, NUM_LEDS);
+}
+
+void led_on(int status) {
+    // Fill the entire strip with a color
+    fill_solid(leds, NUM_LEDS, colors[status]);
+
+    // Show the changes on the strip
+    FastLED.show();
+}
+void led_off(){
+    // Clear the strip
+    fill_solid(leds, NUM_LEDS, CRGB::Black);
+    FastLED.show();
+}
