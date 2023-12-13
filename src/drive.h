@@ -1,10 +1,9 @@
 #include <Arduino.h>
-#include <Arduino.h>
 
 //PWM Outputs
-const int pwm_pin_forward_L = 33;
-const int pwm_pin_backward_L = 34;
-const int pwm_pin_forward_R = 35;
+const int pwm_pin_forward_L = 4;
+const int pwm_pin_backward_L = 33;
+const int pwm_pin_forward_R = 16;
 const int pwm_pin_backward_R = 15;
 //Const Outputs
 const int forward_L = 25;
@@ -13,18 +12,17 @@ const int forward_R = 27;
 const int backward_R = 14;
 
 // setting PWM properties
-const int freq = 5000;
+const int freq = 50000;
 const int channel_pwm_forward_L = 0;
-const int channel_pwm_backward_L = 0;
-const int channel_pwm_forward_R = 0;
-const int channel_pwm_backward_R = 0;
+const int channel_pwm_backward_L = 1;
+const int channel_pwm_forward_R = 2;
+const int channel_pwm_backward_R = 3;
 const int resolution = 8;
 
 const int pwm_forward_L = 255;
 const int pwm_backward_L = 255;
 const int pwm_forward_R = 255;
 const int pwm_backward_R = 255;
-
 
 void setup_drive() {
     // configure LED PWM functionalitites
@@ -49,7 +47,7 @@ void drive_forward() {
     ledcWrite(channel_pwm_backward_R, 0);
     digitalWrite(backward_L, LOW);
     digitalWrite(backward_R, LOW);
-    delay(200);
+    delay(20);
     ledcWrite(channel_pwm_forward_R, pwm_forward_R);
     ledcWrite(channel_pwm_forward_L, pwm_forward_L);
     digitalWrite(forward_L, HIGH);
@@ -61,7 +59,7 @@ void drive_backwards() {
     ledcWrite(channel_pwm_forward_R, 0);
     digitalWrite(forward_L, LOW);
     digitalWrite(forward_R, LOW);
-    delay(200);
+    delay(20);
     ledcWrite(channel_pwm_backward_L, pwm_backward_L);
     ledcWrite(channel_pwm_backward_R, pwm_backward_R);
     digitalWrite(backward_L, HIGH);
@@ -73,7 +71,7 @@ void drive_turn_right() {
     ledcWrite(channel_pwm_forward_R, 0);
     digitalWrite(backward_L, LOW);
     digitalWrite(forward_R, LOW);
-    delay(200);
+    delay(20);
     ledcWrite(channel_pwm_forward_L, pwm_forward_L);
     ledcWrite(channel_pwm_backward_R, pwm_backward_R);
     digitalWrite(forward_L, HIGH);
@@ -85,7 +83,7 @@ void drive_turn_left() {
     ledcWrite(channel_pwm_backward_R, 0);
     digitalWrite(forward_L, LOW);
     digitalWrite(backward_R, LOW);
-    delay(200);
+    delay(20);
     ledcWrite(channel_pwm_backward_L, pwm_backward_L);
     ledcWrite(channel_pwm_forward_R, pwm_forward_R);
     digitalWrite(backward_L, HIGH);

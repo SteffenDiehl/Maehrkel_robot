@@ -37,11 +37,11 @@ void loop(){
     display_output(current_distance, current_Date, current_Time, Status);
     // get_safety(&state_emergency, &state_bumper);
     // get_boundary(&state_coil1, &state_coil2);
-    if (Status == 0 && state_bumper == 1 && state_emergency == 1){
+    if (Status == 0){
         drive_forward();
         cut_start();
     }
-    else if (Status == 1 && state_bumper == 1 && state_emergency == 1){
+    else if (Status == 1){
         drive_backwards();
         // delay(1000);
         // drive_turn();
