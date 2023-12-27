@@ -37,8 +37,10 @@ void loop(){
     display_output(current_distance, current_Date, current_Time, Status);
     // get_safety(&state_emergency, &state_bumper);
     // get_boundary(&state_coil1, &state_coil2);
+    led_on(Status);
     if (Status == 0){
         drive_forward();
+        drive_backwards();
         cut_start();
     }
     else if (Status == 1){
@@ -52,6 +54,5 @@ void loop(){
         drive_stop();
         cut_stop();
     }
-    led_on(Status);
     //delay(1000);
 }
