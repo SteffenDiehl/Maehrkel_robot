@@ -19,11 +19,6 @@ const int channel_pwm_forward_R = 2;
 const int channel_pwm_backward_R = 3;
 const int resolution = 8;
 
-const int pwm_forward_L = 5;
-const int pwm_backward_L = 5;
-const int pwm_forward_R = 5;
-const int pwm_backward_R = 5;
-
 void setup_drive() {
     // configure LED PWM functionalitites
     ledcSetup(channel_pwm_forward_L, freq, resolution);
@@ -42,56 +37,50 @@ void setup_drive() {
     pinMode(backward_R, OUTPUT);
 }
 
-void drive_forward() {
+void drive_forward(int pwm_L, int pwm_R) {
     ledcWrite(channel_pwm_backward_L, 0);
     ledcWrite(channel_pwm_backward_R, 0);
     digitalWrite(backward_L, LOW);
     digitalWrite(backward_R, LOW);
     delay(500);
-    ledcWrite(channel_pwm_forward_L, pwm_forward_L);
-    ledcWrite(channel_pwm_forward_R, pwm_forward_R);
+    ledcWrite(channel_pwm_forward_L, pwm_L);
+    ledcWrite(channel_pwm_forward_R, pwm_R);
     digitalWrite(forward_L, HIGH);
     digitalWrite(forward_R, HIGH);
-    delay(2000);
-    ledcWrite(channel_pwm_forward_L, 255);
-    delay(2000);
 }
 
-void drive_backwards() {
+void drive_backwards(int pwm_L, int pwm_R) {
     ledcWrite(channel_pwm_forward_L, 0);
     ledcWrite(channel_pwm_forward_R, 0);
     digitalWrite(forward_L, LOW);
     digitalWrite(forward_R, LOW);
     delay(500);
-    ledcWrite(channel_pwm_backward_L, pwm_backward_L);
-    ledcWrite(channel_pwm_backward_R, pwm_backward_R);
+    ledcWrite(channel_pwm_backward_L, pwm_L);
+    ledcWrite(channel_pwm_backward_R, pwm_R);
     digitalWrite(backward_L, HIGH);
     digitalWrite(backward_R, HIGH);
-    delay(2000);
-    ledcWrite(channel_pwm_backward_L, 255);
-    delay(2000);
 }
 
-void drive_turn_right() {
+void drive_turn_right(int pwm_L, int pwm_R) {
     ledcWrite(channel_pwm_backward_L, 0);
     ledcWrite(channel_pwm_forward_R, 0);
     digitalWrite(backward_L, LOW);
     digitalWrite(forward_R, LOW);
     delay(500);
-    ledcWrite(channel_pwm_forward_L, pwm_forward_L);
-    ledcWrite(channel_pwm_backward_R, pwm_backward_R);
+    ledcWrite(channel_pwm_forward_L, pwm_L);
+    ledcWrite(channel_pwm_backward_R, pwm_R);
     digitalWrite(forward_L, HIGH);
     digitalWrite(backward_R, HIGH);
 }
 
-void drive_turn_left() {
+void drive_turn_left(int pwm_L, int pwm_R) {
     ledcWrite(channel_pwm_forward_L, 0);
     ledcWrite(channel_pwm_backward_R, 0);
     digitalWrite(forward_L, LOW);
     digitalWrite(backward_R, LOW);
     delay(500);
-    ledcWrite(channel_pwm_backward_L, pwm_backward_L);
-    ledcWrite(channel_pwm_forward_R, pwm_forward_R);
+    ledcWrite(channel_pwm_backward_L, pwm_L);
+    ledcWrite(channel_pwm_forward_R, pwm_R);
     digitalWrite(backward_L, HIGH);
     digitalWrite(forward_R, HIGH);
 }
