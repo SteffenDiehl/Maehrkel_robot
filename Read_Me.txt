@@ -12,7 +12,7 @@ GPIO-0 Safety       emergency
 GPIO-1 
 GPIO-2 Safety       bumper
 GPIO-3
-GPIO-4 
+GPIO-4 Drive        PWM forward L
 GPIO-5 Distance     trigPin
 GPIO-6
 GPIO-7
@@ -24,7 +24,7 @@ GPIO-12 Cut         Output
 GPIO-13 LED-Tape    DATA_PIN
 GPIO-14 Drive       const backward R
 GPIO-15 Drive       PWM backward R
-GPIO-16
+GPIO-16 Drive       PWM forward R
 GPIO-17 Display     TFT_RESET
 GPIO-18 Display     TFT_SCK
 GPIO-19 Display     TFT_MISO
@@ -35,6 +35,6 @@ GPIO-25 Drive       const forward L
 GPIO-26 Drive       const backward L
 GPIO-27 Drive       const forward R
 GPIO-32 Distance    echoPin
-GPIO-33 Drive       PWM forward L
-GPIO-34 Drive       PWM backward L
-GPIO-35 Drive       PWM forward R
+GPIO-33 Drive       PWM backward L
+GPIO-34        
+GPIO-35 
