@@ -18,7 +18,7 @@ GPIO-6
 GPIO-7
 GPIO-8
 GPIO-9
-GPIO-10
+GPIO-10 Charrge     chargePin
 GPIO-11
 GPIO-12 Cut         Output
 GPIO-13 LED-Tape    DATA_PIN

@@ -30,6 +30,7 @@ void setup(){
     setup_cut();
     setup_led();
     setup_boundary();
+    setup_charge();
 }
 void loop(){
     get_data(&current_Date, &current_Time, &Status);
@@ -37,6 +38,7 @@ void loop(){
     display_output(current_distance, current_Date, current_Time, Status);
     // get_safety(&state_emergency, &state_bumper);
     // get_boundary(&state_coil1, &state_coil2);
+    check_charge();
     led_on(Status);
     if (Status == 0){
         drive_forward();
