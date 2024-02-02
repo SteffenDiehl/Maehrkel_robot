@@ -13,10 +13,10 @@ GPIO-1
 GPIO-2 Safety       bumper
 GPIO-3
 GPIO-4 Drive        PWM forward L
-GPIO-5 Distance     trigPin
-GPIO-6
-GPIO-7
-GPIO-8
+GPIO-5 Distance     sense1Pin
+GPIO-6 Distance     sense2Pin
+GPIO-7 Distance     sense3Pin
+GPIO-8 Distance     IO_Pin
 GPIO-9
 GPIO-10 Charrge     chargePin
 GPIO-11
