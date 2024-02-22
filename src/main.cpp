@@ -14,7 +14,8 @@
 String current_Date;
 String current_Time;
 int Status = 2; // 0 == "RUN", 1 ==  "GO HOME", 2 == "STOP"
-float current_distance = 0;
+int current_distance = 0;
+int current_chargeState = 0; // 0 == "Low", 1 == "Mid", 2 == "High"
 int state_emergency = 1;
 int state_bumper = 1;
 int state_coil1 = 0;
@@ -28,14 +29,14 @@ int pwm_B_R = 255;
 void setup(){
     Serial.begin(115200);
     setup_wifi();
-    setup_HCSR04();
+    setup_distance(&current_distance);
     setup_display();
     setup_drive();
     setup_safety();
     setup_cut();
     setup_led();
     setup_boundary();
-    setup_charge();
+    setup_charge(&current_chargeState);
 }
 
 void loop(){

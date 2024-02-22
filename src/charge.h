@@ -1,17 +1,27 @@
 #include <Arduino.h>
 
-const int chargePin = 5;
+const int chargePinLow = 5;
+const int chargePinMid = 5;
+const int chargePinHigh = 5;
 
-int chargeValue = 0;
+int *chargeState = nullptr;
 
-void setup_charge() {
-    Serial.begin(115200);
-    delay(1000);
+void setup_charge(int *c_chargestate) {
+  pinMode(chargePinLow, INPUT);
+  pinMode(chargePinMid, INPUT);
+  pinMode(chargePinHigh, INPUT);
+  chargeState = c_chargestate;
 }
 
 void check_charge() {
-  // Reading potentiometer value
-    chargeValue = analogRead(chargePin);
-    Serial.println(chargeValue);
-    delay(500);
+  if(digitalRead(chargePinLow) == HIGH){
+    *chargeState = 0;
+  }
+  else if(digitalRead(chargePinLow) == HIGH){
+    *chargeState = 1;
+  }
+  else if(digitalRead(chargePinLow) == HIGH){
+    *chargeState = 2;
+  }
+  delay(500);
 }

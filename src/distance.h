@@ -7,21 +7,24 @@ const int sens2Pin = 6;
 const int sens3Pin = 7;
 const int IO_Pin = 8;
 
+int *distance = nullptr;
+
 //define sound speed in cm/uS
 // #define SOUND_SPEED 0.034
 
 // long duration;
 // float distanceCm;
 
-void setup_HCSR04() { // Starts the serial communication
+void setup_distance(int *c_distance) { // Starts the serial communication
   //pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
   pinMode(sens1Pin, INPUT); // Sets the echoPin as an Input
   pinMode(sens2Pin, INPUT);
   pinMode(sens3Pin, INPUT);
   pinMode(IO_Pin, OUTPUT);
+  distance = c_distance;
 }
 
-void get_distance(float *cdistance) {
+void get_distance() {
   digitalRead(sens1Pin);
   digitalRead(sens2Pin);
   digitalRead(sens3Pin);
