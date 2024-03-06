@@ -28,11 +28,12 @@ void setup_display(void)
     display.println(" Date:");
     display.println(" Time:");
     display.println(" Status:");
-    display.println(" Distance:");
+    display.println(" Humid:");
+    display.println(" Temp:");
     display.setCursor(120, 50);
-    display.println("192.168.178.25");
+    display.println("192.168.178.27");
 }
-void display_output(float cDistance, String cDate, String cTime, int cStatus){
+void display_output(String cDate, String cTime, int cStatus, String cHumid, String cTemp){
     display.fillRect(120, 65, 200, 175, GREEN);
     display.setCursor(120, 66);
     display.println(cDate);
@@ -41,5 +42,7 @@ void display_output(float cDistance, String cDate, String cTime, int cStatus){
     display.setCursor(120, 98);
     display.println(myStatus[cStatus]);
     display.setCursor(120, 114);
-    display.println(String(cDistance));
+    display.println(cHumid);
+    display.setCursor(120, 130);
+    display.println(cTemp);
 }

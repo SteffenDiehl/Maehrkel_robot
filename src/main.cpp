@@ -13,6 +13,9 @@
 
 String current_Date;
 String current_Time;
+String current_Humidity;
+String current_Temperature;
+
 int Status = 2; // 0 == "RUN", 1 ==  "GO HOME", 2 == "STOP"
 int current_distance = 0;
 int current_chargeState = 0; // 0 == "Low", 1 == "Mid", 2 == "High"
@@ -41,10 +44,10 @@ void setup(){
 
 void loop(){
     get_data(&current_Date, &current_Time, &Status);
-    // get_distance(&current_distance);
-    display_output(current_distance, current_Date, current_Time, Status);
-    // get_safety(&state_emergency, &state_bumper);
-    // get_boundary(&state_coil1, &state_coil2);
+    get_distance();
+    display_output(current_Date, current_Time, Status, current_Humidity, current_Temperature);
+    get_safety(&state_emergency, &state_bumper);
+    get_boundary(&state_coil1, &state_coil2);
     check_charge();
     led_on(Status);
     if (Status == 0){

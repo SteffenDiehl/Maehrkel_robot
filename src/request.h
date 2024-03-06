@@ -4,25 +4,33 @@
 #include <HTTPClient.h>
 #include <Wire.h>
 
-const char* ssid = "DiehlWithIt";   //"JustDiehlWithIt";
-const char* password = "DiehlWithIt"; //"DiehlWithIt09";
+const char* ssid = "JustDiehlWithIt";   //"JustDiehlWithIt";
+const char* password = "DiehlWithIt09"; //"DiehlWithIt09";
 
-IPAddress staticIP (192, 168, 43, 69); // Die gewünschte IP-Adresse //IP-Smartphone 192, 168, 43, 68 // IP-Fritzbox 192, 168, 178, 27
-IPAddress gateway(192, 168, 43, 1);    // Das Gateway
+IPAddress staticIP (192, 168, 178, 27); // Die gewünschte IP-Adresse //IP-Smartphone 192, 168, 43, 68 // IP-Fritzbox 192, 168, 178, 27
+IPAddress gateway(192, 168, 178, 1);    // Das Gateway
 IPAddress subnet(255, 255, 255, 0);   // Die Subnetzmaske
 IPAddress dns(8, 8, 8, 8);
 
-String Host_IP = "192.168.43.68";  //"192.168.178.26";
+String Host_IP = "192.168.178.26";  //"192.168.178.26";
 
 String Date = "";
-const char* serverDate = "http://192.168.43.68/Date";
+const char* serverDate = "http://192.168.178.26/Date";
 
 String Time = "";
-const char* serverTime = "http://192.168.43.68/Time";
+const char* serverTime = "http://192.168.178.26/Time";
 
 String str_Status = "";
 int sStatus = 2;
-const char* serverStatus = "http://192.168.43.68/Status";
+const char* serverStatus = "http://192.168.178.26/Status";
+
+String str_Humidity = "";
+float Humidity = 0;
+const char* serverHumidity = "http://192.168.178.26/Humidity";
+
+String str_Temperature = "";
+float Temperature = 0;
+const char* serverTemperature = "http://192.168.178.26/Temperature";
 
 int *web_status = nullptr;
 
