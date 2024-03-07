@@ -8,8 +8,11 @@ void setup_boundary() {
     pinMode(coil2, INPUT);
 }
 
-void get_boundary(int* s_coil1, int* s_coil2){
-    *s_coil1 = digitalRead(coil1);
-    *s_coil2 = digitalRead(coil2);
-    Serial.println(String(digitalRead(coil1)) + "  other   " + String(digitalRead(coil2)));
+void get_boundary(bool *s_boundry){
+    if (digitalRead(coil1) or digitalRead(coil2)){
+        *s_boundry = true;
+    }
+    else{
+        *s_boundry = false;
+    }
 }

@@ -7,48 +7,43 @@ const int sens2Pin = 6;
 const int sens3Pin = 7;
 const int IO_Pin = 8;
 
-int *distance = nullptr;
+int sens_time = 0;
+int sens_timing = 500; //0,5s
+int sens_timeout = 2000; //0,5s
 
-//define sound speed in cm/uS
-// #define SOUND_SPEED 0.034
-
-// long duration;
-// float distanceCm;
-
-void setup_distance(int *c_distance) { // Starts the serial communication
+void setup_distance() { // Starts the serial communication
   //pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
   pinMode(sens1Pin, INPUT); // Sets the echoPin as an Input
   pinMode(sens2Pin, INPUT);
   pinMode(sens3Pin, INPUT);
-  pinMode(IO_Pin, OUTPUT);
-  distance = c_distance;
+  pinMode(IO_Pin, OUTPUT);  
 }
 
-void get_distance() {
+void get_distance(bool *c_distance) {
   digitalRead(sens1Pin);
   digitalRead(sens2Pin);
   digitalRead(sens3Pin);
   digitalWrite(IO_Pin, HIGH);
   digitalWrite(IO_Pin, LOW);
-
-  // // Clears the trigPin
-  //   digitalWrite(trigPin, LOW);
-  //   delayMicroseconds(2);
-  // // Sets the trigPin on HIGH state for 10 micro seconds
-  //   digitalWrite(trigPin, HIGH);
-  //   delayMicroseconds(10);
-  //   digitalWrite(trigPin, LOW);
-
-  // // Reads the echoPin, returns the sound wave travel time in microseconds
-  //   duration = pulseIn(echoPin, HIGH);
-
-  // // Calculate the distance
-  //   distanceCm = duration * SOUND_SPEED/2;
-    
-  // // Prints the distance in the Serial Monitor
-  //   Serial.print("Distance (cm): ");
-  //   Serial.println(distanceCm);
-  //   *cdistance = distanceCm; 
-    
-  //   delay(1000);
+  if (digitalRead(sens1Pin) or digitalRead(sens2Pin) or digitalRead(sens3Pin)) {
+    if (sens_time == 0) {
+      // If sens_time is not set, set it
+      sens_time = millis();
+    }
+    if (millis() >= (sens_time + sens_timing))
+    {
+      *c_distance = true;
+    }
+    else{
+      *c_distance = false;
+    }
+  }
+  else {
+    // Conditions are not met
+    if (millis() >= (sens_time + sens_timeout)) {
+      // If the timeout has elapsed since sens_time was set
+      sens_time = 0; // Reset sens_time
+      *c_distance = false;
+    }
+  }
 }

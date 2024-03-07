@@ -14,22 +14,20 @@ IPAddress dns(8, 8, 8, 8);
 
 String Host_IP = "192.168.178.26";  //"192.168.178.26";
 
-String Date = "";
+//String Date = "";
 const char* serverDate = "http://192.168.178.26/Date";
 
-String Time = "";
+//String Time = "";
 const char* serverTime = "http://192.168.178.26/Time";
 
 String str_Status = "";
-int sStatus = 2;
+//int sStatus = 2;
 const char* serverStatus = "http://192.168.178.26/Status";
 
-String str_Humidity = "";
-float Humidity = 0;
+//String str_Humidity = "";
 const char* serverHumidity = "http://192.168.178.26/Humidity";
 
-String str_Temperature = "";
-float Temperature = 0;
+//String str_Temperature = "";
 const char* serverTemperature = "http://192.168.178.26/Temperature";
 
 int *web_status = nullptr;
@@ -51,12 +49,12 @@ String httpGETRequest(const char* server_request) {
     Serial.println(httpResponseCode);
     payload = http.getString();
   }
-  else if (server_request == serverStatus)
-  {
-    payload = "2";
-  }
   else
   {
+    if (server_request == serverStatus)
+    {
+      payload = "2";
+    }
     Serial.print("Error code: ");
     Serial.println(httpResponseCode);
     payload = "Error"; // You can set payload to some default value on error
@@ -91,17 +89,15 @@ void setup_wifi() {
   Serial.print("IP Address: ");
   Serial.println(WiFi.localIP());
 }
-void get_data(String* cDate, String* cTime, int* cStatus) {
-  if(WiFi.status()== WL_CONNECTED ){ 
-    Date = httpGETRequest(serverDate);
-    Time = httpGETRequest(serverTime);
+void get_data(String *cDate, String *cTime, int *cStatus, String *cHumidity, String *cTemperature) {
+  if(WiFi.status()== WL_CONNECTED){ 
+    *cDate = httpGETRequest(serverDate);
+    *cTime = httpGETRequest(serverTime);
     str_Status = httpGETRequest(serverStatus);
-    sStatus = atoi(str_Status.c_str());
-    Serial.println("Time: " + Time + " - Date: " + Date);
-    *cDate = Date;
-    *cTime = Time;
-    *cStatus = sStatus;
-
+    *cStatus = atoi(str_Status.c_str());
+    *cHumidity = httpGETRequest(serverHumidity);
+    *cTemperature = httpGETRequest(serverTemperature);
+    Serial.println("Time: " + *cTime + " - Date: " + *cDate);
     // save the last HTTP GET Request
   }
   else {
