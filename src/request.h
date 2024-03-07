@@ -52,12 +52,12 @@ String httpGETRequest(const char* server_request) {
     Serial.println(httpResponseCode);
     payload = http.getString();
   }
-  else
-  {
-    if (server_request == serverStatus)
+  else if (server_request == serverStatus)
     {
       payload = "2";
     }
+  else
+  {
     Serial.print("Error code: ");
     Serial.println(httpResponseCode);
     payload = "Error"; // You can set payload to some default value on error
@@ -101,7 +101,7 @@ void get_data(String *cDate, String *cTime, int *cStatus, String *cHumidity, Str
     *cStatus = atoi(str_Status.c_str());
     *cHumidity = httpGETRequest(serverHumidity);
     *cTemperature = httpGETRequest(serverTemperature);
-    Serial.println("Time: " + *cTime + " - Date: " + *cDate);
+    //Serial.println("Time: " + *cTime + " - Date: " + *cDate);
     // save the last HTTP GET Request
   }
   else {

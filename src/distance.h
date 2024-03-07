@@ -2,10 +2,10 @@
 
 // const int trigPin = 5;
 // const int echoPin = 32;
-const int sens1Pin = 5;
-const int sens2Pin = 6;
-const int sens3Pin = 7;
-const int IO_Pin = 8;
+const int sensPin = 5;
+// const int sens2Pin = 6;
+// const int sens3Pin = 7;
+// const int IO_Pin = 2;
 
 int sens_time = 0;
 int sens_timing = 500; //0,5s
@@ -13,19 +13,19 @@ int sens_timeout = 2000; //0,5s
 
 void setup_distance() { // Starts the serial communication
   //pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
-  pinMode(sens1Pin, INPUT); // Sets the echoPin as an Input
-  pinMode(sens2Pin, INPUT);
-  pinMode(sens3Pin, INPUT);
-  pinMode(IO_Pin, OUTPUT);  
+  pinMode(sensPin, INPUT); // Sets the echoPin as an Input
+  // pinMode(sens2Pin, INPUT);
+  // pinMode(sens3Pin, INPUT);
+  // pinMode(IO_Pin, OUTPUT);  
 }
 
 void get_distance(bool *c_distance) {
-  digitalRead(sens1Pin);
-  digitalRead(sens2Pin);
-  digitalRead(sens3Pin);
-  digitalWrite(IO_Pin, HIGH);
-  digitalWrite(IO_Pin, LOW);
-  if (digitalRead(sens1Pin) or digitalRead(sens2Pin) or digitalRead(sens3Pin)) {
+  digitalRead(sensPin);
+  // digitalRead(sens2Pin);
+  // digitalRead(sens3Pin);
+  // digitalWrite(IO_Pin, HIGH);
+  // digitalWrite(IO_Pin, LOW);
+  if (digitalRead(sensPin)) {
     if (sens_time == 0) {
       // If sens_time is not set, set it
       sens_time = millis();

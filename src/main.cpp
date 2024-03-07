@@ -35,7 +35,7 @@ int turn_time = 500; //0,5s
 void setup(){
     Serial.begin(115200);
     setup_wifi();
-    setup_distance();
+    //setup_distance();
     setup_display();
     setup_drive();
     setup_safety();
@@ -46,11 +46,11 @@ void setup(){
 }
 
 void loop(){
+    get_safety(&state_emergency);
     send_data(state_emergency);
     get_data(&current_Date, &current_Time, &Status, &current_Humidity, &current_Temperature);
     get_distance(&current_distance);
     display_output(current_Date, current_Time, Status, current_Humidity, current_Temperature);
-    get_safety(&state_emergency);
     get_boundary(&state_boundry);
     check_charge();
     led_on(Status);

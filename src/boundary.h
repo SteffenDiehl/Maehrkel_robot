@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
-const int coil1 = 13;
-const int coil2 = 12;
+const int coil1 = 32;
+const int coil2 = 35;
 
 void setup_boundary() {
     pinMode(coil1, INPUT); // Sets thePin as an INPUT

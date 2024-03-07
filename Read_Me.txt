@@ -8,18 +8,18 @@ dns(8, 8, 8, 8);                //DNS
 
 ESP32 Pinout
 
-GPIO-0 Safety       emergency
-GPIO-1 
-GPIO-2 Safety       bumper
-GPIO-3
-GPIO-4 Drive        PWM forward L
-GPIO-5 Distance     sense1Pin
-GPIO-6 Distance     sense2Pin
-GPIO-7 Distance     sense3Pin
-GPIO-8 Distance     IO_Pin
-GPIO-9
-GPIO-10 Charrge     chargePin
-GPIO-11
+GPIO-0  Safety      lift1
+GPIO-1  //
+GPIO-2  //
+GPIO-3  //
+GPIO-4  Drive       PWM forward L
+GPIO-5  Distance    sensePin
+GPIO-6  //
+GPIO-7  //
+GPIO-8  //
+GPIO-9  //
+GPIO-10 //
+GPIO-11 //
 GPIO-12 Cut         Output
 GPIO-13 LED-Tape    DATA_PIN
 GPIO-14 Drive       const backward R
@@ -34,7 +34,7 @@ GPIO-23 Display     TFT_MOSI
 GPIO-25 Drive       const forward L
 GPIO-26 Drive       const backward L
 GPIO-27 Drive       const forward R
-GPIO-32 Distance    echoPin
+GPIO-32 Boundry     coil1
 GPIO-33 Drive       PWM backward L
-GPIO-34        
-GPIO-35 
+GPIO-34 Charrge     chargePin
+GPIO-35 Boundry     coil2
