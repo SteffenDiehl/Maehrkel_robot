@@ -13,9 +13,11 @@ void setup_safety() {
 void get_safety(bool *s_emergency){
     if (digitalRead(lift))
     {
-        *s_emergency = true;
+        *s_emergency = false;
+        Serial.println("ok");
     }
     else{
-        *s_emergency = false;
+        *s_emergency = true;
+        Serial.println("not ok");
     }
 }

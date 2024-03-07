@@ -92,4 +92,5 @@ void loop(){
         drive_stop();
         cut_stop();
     }
+    delay(200);
 }
