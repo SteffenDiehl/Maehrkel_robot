@@ -46,6 +46,7 @@ void setup(){
 }
 
 void loop(){
+    send_data(state_emergency);
     get_data(&current_Date, &current_Time, &Status, &current_Humidity, &current_Temperature);
     get_distance(&current_distance);
     display_output(current_Date, current_Time, Status, current_Humidity, current_Temperature);

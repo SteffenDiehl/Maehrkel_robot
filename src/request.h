@@ -30,6 +30,9 @@ const char* serverHumidity = "http://192.168.178.26/Humidity";
 //String str_Temperature = "";
 const char* serverTemperature = "http://192.168.178.26/Temperature";
 
+const char* serverSend_emergency = "http://192.168.178.26/emergency";
+const char* serverSend_no_emergency = "http://192.168.178.26/no-emergency";
+
 int *web_status = nullptr;
 
 String httpGETRequest(const char* server_request) {
@@ -89,6 +92,7 @@ void setup_wifi() {
   Serial.print("IP Address: ");
   Serial.println(WiFi.localIP());
 }
+
 void get_data(String *cDate, String *cTime, int *cStatus, String *cHumidity, String *cTemperature) {
   if(WiFi.status()== WL_CONNECTED){ 
     *cDate = httpGETRequest(serverDate);
@@ -99,6 +103,21 @@ void get_data(String *cDate, String *cTime, int *cStatus, String *cHumidity, Str
     *cTemperature = httpGETRequest(serverTemperature);
     Serial.println("Time: " + *cTime + " - Date: " + *cDate);
     // save the last HTTP GET Request
+  }
+  else {
+    Serial.println("WiFi Disconnected");
+  }
+}
+
+void send_data(bool emergency) {
+  if(WiFi.status()== WL_CONNECTED){ 
+    if (emergency)
+    {
+      httpGETRequest(serverSend_emergency);
+    }
+    else{
+      httpGETRequest(serverSend_no_emergency);
+    }
   }
   else {
     Serial.println("WiFi Disconnected");
