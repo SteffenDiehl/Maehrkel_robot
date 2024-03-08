@@ -85,7 +85,9 @@ void loop(){
         }
     }
     else if (Status == 1){
-        drive_backwards(pwm_B_L, pwm_B_R);
+        //drive_backwards(pwm_B_L, pwm_B_R);
+        drive_stop();
+        cut_stop();
     }
     else{
         drive_status = 0;

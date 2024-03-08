@@ -42,7 +42,7 @@ void drive_forward(int pwm_L, int pwm_R) {
     ledcWrite(channel_pwm_backward_R, 0);
     digitalWrite(backward_L, LOW);
     digitalWrite(backward_R, LOW);
-    delay(500);
+    delay(200);
     ledcWrite(channel_pwm_forward_L, pwm_L);
     ledcWrite(channel_pwm_forward_R, pwm_R);
     digitalWrite(forward_L, HIGH);
@@ -54,7 +54,7 @@ void drive_backwards(int pwm_L, int pwm_R) {
     ledcWrite(channel_pwm_forward_R, 0);
     digitalWrite(forward_L, LOW);
     digitalWrite(forward_R, LOW);
-    delay(500);
+    delay(200);
     ledcWrite(channel_pwm_backward_L, pwm_L);
     ledcWrite(channel_pwm_backward_R, pwm_R);
     digitalWrite(backward_L, HIGH);
@@ -66,7 +66,7 @@ void drive_turn_right(int pwm_L, int pwm_R) {
     ledcWrite(channel_pwm_forward_R, 0);
     digitalWrite(backward_L, LOW);
     digitalWrite(forward_R, LOW);
-    delay(500);
+    delay(200);
     ledcWrite(channel_pwm_forward_L, pwm_L);
     ledcWrite(channel_pwm_backward_R, pwm_R);
     digitalWrite(forward_L, HIGH);
@@ -78,7 +78,7 @@ void drive_turn_left(int pwm_L, int pwm_R) {
     ledcWrite(channel_pwm_backward_R, 0);
     digitalWrite(forward_L, LOW);
     digitalWrite(backward_R, LOW);
-    delay(500);
+    delay(200);
     ledcWrite(channel_pwm_backward_L, pwm_L);
     ledcWrite(channel_pwm_forward_R, pwm_R);
     digitalWrite(backward_L, HIGH);

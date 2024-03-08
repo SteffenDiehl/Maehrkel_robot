@@ -31,6 +31,7 @@ const char* serverHumidity = "http://192.168.178.26/Humidity";
 const char* serverTemperature = "http://192.168.178.26/Temperature";
 
 const char* serverSend_emergency = "http://192.168.178.26/emergency";
+
 const char* serverSend_no_emergency = "http://192.168.178.26/no-emergency";
 
 int *web_status = nullptr;
