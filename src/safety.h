@@ -11,7 +11,7 @@ void setup_safety() {
 }
 
 void get_safety(bool *s_emergency){
-    if (digitalRead(lift))
+    if (not digitalRead(lift))// remove not later
     {
         *s_emergency = false;
         Serial.println("not ok");

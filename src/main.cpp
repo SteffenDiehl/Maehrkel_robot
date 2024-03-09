@@ -18,6 +18,8 @@ String current_Temperature;
 
 int Status = 2; // 0 == "RUN", 1 ==  "GO HOME", 2 == "STOP"
 int drive_status = 0; //durring "RUN": 0 == forward, 1 == backward, 2 == turn
+int led_status = 0;
+
 bool current_distance = false;
 int current_chargeState = 0; // 0 == "Low", 1 == "Mid", 2 == "High"
 bool state_emergency = false;
@@ -53,7 +55,12 @@ void loop(){
     display_output(current_Date, current_Time, Status, current_Humidity, current_Temperature);
     get_boundary(&state_boundry);
     check_charge();
-    led_on(Status);
+    if (led_status != Status)
+    {
+        led_on(Status);
+        led_status = Status;
+    }
+    
     if (Status == 0){
         cut_start();
         if (current_distance)        {
@@ -85,8 +92,8 @@ void loop(){
         }
     }
     else if (Status == 1){
-        //drive_backwards(pwm_B_L, pwm_B_R);
-        drive_stop();
+        drive_backwards(pwm_B_L, pwm_B_R);
+        //drive_stop();
         cut_stop();
     }
     else{

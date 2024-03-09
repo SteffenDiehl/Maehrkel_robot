@@ -114,10 +114,10 @@ void send_data(bool emergency) {
   if(WiFi.status()== WL_CONNECTED){ 
     if (emergency)
     {
-      httpGETRequest(serverSend_emergency);
+      httpGETRequest(serverSend_no_emergency);
     }
     else{
-      httpGETRequest(serverSend_no_emergency);
+      httpGETRequest(serverSend_emergency);
     }
   }
   else {
