@@ -42,7 +42,7 @@ void setup(){
     setup_led();
     setup_boundary();
     setup_charge(&current_chargeState);
-    setup_buttons();
+    //setup_buttons();
 }
 
 void loop(){
@@ -53,7 +53,7 @@ void loop(){
     display_output(current_Date, current_Time, Status, current_Humidity, current_Temperature);
     get_boundary(&state_boundry);
     check_charge();
-    check_buttons();
+    //check_buttons();
     if (led_status != Status)
     {
         led_on(Status);
