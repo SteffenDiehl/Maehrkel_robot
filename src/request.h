@@ -11,7 +11,7 @@ const char* password = "DiehlWithIt"; //"DiehlWithIt09";
 //IPAddress gateway(192, 168, 178, 1);    // Das Gateway
 
 //Smartphone
-IPAddress staticIP (192, 168, 43, 69); // Die gewünschte IP-Adresse //IP-Smartphone 192, 168, 43, 68 // IP-Fritzbox 192, 168, 178, 27
+IPAddress staticIP (192, 168, 43, 56); // Die gewünschte IP-Adresse //IP-Smartphone 192, 168, 43, 68 // IP-Fritzbox 192, 168, 178, 27
 IPAddress gateway(192, 168, 43, 1);
 
 IPAddress subnet(255, 255, 255, 0);   // Die Subnetzmaske
@@ -45,31 +45,31 @@ IPAddress dns(8, 8, 8, 8);
 // const char* serverSend_stop = "http://192.168.178.26/stop";
 
 //Smartphone
-String Host_IP = "192.168.43.68";
+String Host_IP = "192.168.43.55";
 
 //String Date = "";
-const char* serverDate = "http://192.168.43.68/Date";
+const char* serverDate = "http://192.168.43.55/Date";
 
 //String Time = "";
-const char* serverTime = "http://192.168.43.68/Time";
+const char* serverTime = "http://192.168.43.55/Time";
 
 String str_Status = "";
 //int sStatus = 2;
-const char* serverStatus = "http://192.168.43.68/Status";
+const char* serverStatus = "http://192.168.43.55/Status";
 
 //String str_Humidity = "";
-const char* serverHumidity = "http://192.168.43.68/Humidity";
+const char* serverHumidity = "http://192.168.43.55/Humidity";
 
 //String str_Temperature = "";
-const char* serverTemperature = "http://192.168.43.68/Temperature";
+const char* serverTemperature = "http://192.168.43.55/Temperature";
 
-const char* serverSend_emergency = "http://192.168.43.68/emergency";
+const char* serverSend_emergency = "http://192.168.43.55/emergency";
 
-const char* serverSend_no_emergency = "http://192.168.43.68/no-emergency";
+const char* serverSend_no_emergency = "http://192.168.43.55/no-emergency";
 
-const char* serverSend_start = "http://192.168.43.68/start";
+const char* serverSend_start = "http://192.168.43.55/start";
 
-const char* serverSend_stop = "http://192.168.43.68/stop";
+const char* serverSend_stop = "http://192.168.43.55/stop";
 
 int *web_status = nullptr;
 

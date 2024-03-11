@@ -18,18 +18,12 @@ String current_Humidity;
 String current_Temperature;
 
 int Status = 2; // 0 == "RUN", 1 ==  "GO HOME", 2 == "STOP"
-int drive_status = 0; //durring "RUN": 0 == forward, 1 == backward, 2 == turn
 int led_status = 0;
 
 bool current_distance = false;
 int current_chargeState = 0; // 0 == "Low", 1 == "Mid", 2 == "High"
 bool state_emergency = false;
 bool state_boundry = false;
-
-int pwm_F_L = 255;
-int pwm_B_L = 255;
-int pwm_F_R = 255;
-int pwm_B_R = 255;
 
 void setup(){
     Serial.begin(115200);
@@ -69,7 +63,6 @@ void loop(){
         cut_stop();
     }
     else{
-        drive_status = 0;
         drive_stop();
         cut_stop();
     }

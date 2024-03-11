@@ -19,6 +19,13 @@ const int channel_pwm_forward_R = 2;
 const int channel_pwm_backward_R = 3;
 const int resolution = 8;
 
+int pwm_F_L = 255;
+int pwm_B_L = 255;
+int pwm_F_R = 255;
+int pwm_B_R = 255;
+
+int drive_status = 0; //durring "RUN": 0 == forward, 1 == backward, 2 == turn
+
 int drive_timer = 0;
 int reverse_time = 500; //0,5s
 int turn_time = 500; //0,5s
@@ -90,6 +97,7 @@ void drive_turn_left(int pwm_L, int pwm_R) {
 }
 
 void drive_stop() {
+    drive_status = 0;
     ledcWrite(channel_pwm_forward_L, 0);
     ledcWrite(channel_pwm_backward_L, 0);
     ledcWrite(channel_pwm_forward_R, 0);
@@ -126,6 +134,5 @@ void driving(bool drive_distance, bool drive_boundary){
         }
         else{
             drive_stop();
-            cut_stop();
         }
 }
