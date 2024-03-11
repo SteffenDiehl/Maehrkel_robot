@@ -23,6 +23,13 @@ int drive_timer = 0;
 int reverse_time = 500; //0,5s
 int turn_time = 500; //0,5s
 
+int drive_status = 0; //durring "RUN": 0 == forward, 1 == backward, 2 == turn
+
+int pwm_F_L = 255;
+int pwm_B_L = 255;
+int pwm_F_R = 255;
+int pwm_B_R = 255;
+
 void setup_drive() {
     // configure LED PWM functionalitites
     ledcSetup(channel_pwm_forward_L, freq, resolution);
@@ -126,6 +133,5 @@ void driving(bool drive_distance, bool drive_boundary){
         }
         else{
             drive_stop();
-            cut_stop();
         }
 }
