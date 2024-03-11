@@ -4,8 +4,8 @@
 #include <HTTPClient.h>
 #include <Wire.h>
 
-const char* ssid = "JustDiehlWithIt";   //"JustDiehlWithIt";
-const char* password = "DiehlWithIt09"; //"DiehlWithIt09";
+const char* ssid = "DiehlWithIt";   //"JustDiehlWithIt";
+const char* password = "DiehlWithIt"; //"DiehlWithIt09";
 
 IPAddress staticIP (192, 168, 43, 56); // Die gewünschte IP-Adresse //IP-Smartphone 192, 168, 43, 68 // IP-Fritzbox 192, 168, 178, 27
 IPAddress gateway(192, 168, 43, 1);    // Das Gateway
