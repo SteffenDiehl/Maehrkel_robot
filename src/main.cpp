@@ -10,6 +10,7 @@
 #include <cut.h>
 #include <ledTape.h>
 #include <boundary.h>
+#include <buttons.h>
 
 String current_Date;
 String current_Time;
@@ -18,6 +19,8 @@ String current_Temperature;
 
 int Status = 2; // 0 == "RUN", 1 ==  "GO HOME", 2 == "STOP"
 int drive_status = 0; //durring "RUN": 0 == forward, 1 == backward, 2 == turn
+int led_status = 0;
+
 bool current_distance = false;
 int current_chargeState = 0; // 0 == "Low", 1 == "Mid", 2 == "High"
 bool state_emergency = false;
@@ -27,10 +30,6 @@ int pwm_F_L = 255;
 int pwm_B_L = 255;
 int pwm_F_R = 255;
 int pwm_B_R = 255;
-
-int drive_timer = 0;
-int reverse_time = 500; //0,5s
-int turn_time = 500; //0,5s
 
 void setup(){
     Serial.begin(115200);
@@ -43,50 +42,30 @@ void setup(){
     setup_led();
     setup_boundary();
     setup_charge(&current_chargeState);
+    //setup_buttons();
 }
 
 void loop(){
     get_safety(&state_emergency);
-    send_data(state_emergency);
+    send_emergency(state_emergency);
     get_data(&current_Date, &current_Time, &Status, &current_Humidity, &current_Temperature);
-    get_distance(&current_distance);
+    //get_distance(&current_distance);
     display_output(current_Date, current_Time, Status, current_Humidity, current_Temperature);
     get_boundary(&state_boundry);
     check_charge();
-    led_on(Status);
+    //check_buttons();
+    if (led_status != Status)
+    {
+        led_on(Status);
+        led_status = Status;
+    }
+    
     if (Status == 0){
         cut_start();
-        if (current_distance)        {
-            drive_status = 1;
-            drive_timer = millis();
-        }
-        if (drive_status == 0){
-            drive_forward(pwm_F_L, pwm_F_R);
-        }
-        else if (drive_status == 1){
-            drive_backwards(pwm_B_L, pwm_B_R);
-            if (millis() >= (drive_timer + reverse_time))
-            {
-                drive_status = 2;
-                drive_timer = millis();
-            }
-            
-        }
-        else if (drive_status == 2){
-            drive_turn_left(pwm_B_L, pwm_F_R);
-            if (millis() >= (drive_timer + turn_time))
-            {
-                drive_status = 0;
-            }
-        }
-        else{
-            drive_stop();
-            cut_stop();
-        }
+        driving(current_distance, state_boundry);
     }
     else if (Status == 1){
-        //drive_backwards(pwm_B_L, pwm_B_R);
-        drive_stop();
+        driving(current_distance, state_boundry);
         cut_stop();
     }
     else{

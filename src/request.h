@@ -37,6 +37,10 @@ const char* serverSend_emergency = "http://192.168.178.26/emergency";
 
 const char* serverSend_no_emergency = "http://192.168.178.26/no-emergency";
 
+const char* serverSend_start = "http://192.168.178.26/start";
+
+const char* serverSend_stop = "http://192.168.178.26/stop";
+
 //Smartphone
 
 // String Host_IP = "192.168.43.68";
@@ -131,15 +135,33 @@ void get_data(String *cDate, String *cTime, int *cStatus, String *cHumidity, Str
   }
 }
 
-void send_data(bool emergency) {
+void send_emergency(bool emergency) {
   if(WiFi.status()== WL_CONNECTED){ 
     if (emergency)
     {
-      httpGETRequest(serverSend_emergency);
-    }
-    else{
       httpGETRequest(serverSend_no_emergency);
     }
+    else{
+      httpGETRequest(serverSend_emergency);
+    }
+  }
+  else {
+    Serial.println("WiFi Disconnected");
+  }
+}
+
+void send_start() {
+  if(WiFi.status()== WL_CONNECTED){ 
+      httpGETRequest(serverSend_start);
+  }
+  else {
+    Serial.println("WiFi Disconnected");
+  }
+}
+
+void send_stop() {
+  if(WiFi.status()== WL_CONNECTED){ 
+      httpGETRequest(serverSend_stop);
   }
   else {
     Serial.println("WiFi Disconnected");
