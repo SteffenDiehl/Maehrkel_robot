@@ -9,6 +9,20 @@ void setup_boundary() {
 }
 
 void get_boundary(bool *s_boundry){
+    if(digitalRead(coil1)){
+        Serial.println("c1 high");
+    }
+    else
+    {
+        Serial.println("c1 low");
+    }
+        if(digitalRead(coil2)){
+        Serial.println("c2 high");
+    }
+    else
+    {
+        Serial.println("c2 low");
+    }
     if (digitalRead(coil1) or digitalRead(coil2)){
         *s_boundry = true;
     }

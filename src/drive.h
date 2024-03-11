@@ -19,6 +19,10 @@ const int channel_pwm_forward_R = 2;
 const int channel_pwm_backward_R = 3;
 const int resolution = 8;
 
+int drive_timer = 0;
+int reverse_time = 500; //0,5s
+int turn_time = 500; //0,5s
+
 void setup_drive() {
     // configure LED PWM functionalitites
     ledcSetup(channel_pwm_forward_L, freq, resolution);
@@ -94,4 +98,34 @@ void drive_stop() {
     digitalWrite(backward_L, LOW);
     digitalWrite(forward_R, LOW);
     digitalWrite(backward_R, LOW);
+}
+
+void driving(bool drive_distance, bool drive_boundary){
+    if (drive_distance or drive_boundary)        {
+            drive_status = 1;
+            drive_timer = millis();
+        }
+        if (drive_status == 0){
+            drive_forward(pwm_F_L, pwm_F_R);
+        }
+        else if (drive_status == 1){
+            drive_backwards(pwm_B_L, pwm_B_R);
+            if (millis() >= (drive_timer + reverse_time))
+            {
+                drive_status = 2;
+                drive_timer = millis();
+            }
+            
+        }
+        else if (drive_status == 2){
+            drive_turn_left(pwm_B_L, pwm_F_R);
+            if (millis() >= (drive_timer + turn_time))
+            {
+                drive_status = 0;
+            }
+        }
+        else{
+            drive_stop();
+            cut_stop();
+        }
 }
