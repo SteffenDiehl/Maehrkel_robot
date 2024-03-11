@@ -7,32 +7,53 @@
 const char* ssid = "JustDiehlWithIt";   //"JustDiehlWithIt";
 const char* password = "DiehlWithIt09"; //"DiehlWithIt09";
 
+//Fritzbox
 IPAddress staticIP (192, 168, 178, 27); // Die gewünschte IP-Adresse //IP-Smartphone 192, 168, 43, 68 // IP-Fritzbox 192, 168, 178, 27
 IPAddress gateway(192, 168, 178, 1);    // Das Gateway
+//Smartphone
+IPAddress staticIP (192, 168, 43, 69); // Die gewünschte IP-Adresse //IP-Smartphone 192, 168, 43, 68 // IP-Fritzbox 192, 168, 178, 27
+IPAddress gateway(192, 168, 43, 1);    // Das Gateway
+
 IPAddress subnet(255, 255, 255, 0);   // Die Subnetzmaske
 IPAddress dns(8, 8, 8, 8);
 
-String Host_IP = "192.168.178.26";  //"192.168.178.26";
+String str_Status = "";
 
-//String Date = "";
+//Fritzbox
+
+String Host_IP = "192.168.178.26";
+
 const char* serverDate = "http://192.168.178.26/Date";
 
-//String Time = "";
 const char* serverTime = "http://192.168.178.26/Time";
 
-String str_Status = "";
-//int sStatus = 2;
 const char* serverStatus = "http://192.168.178.26/Status";
 
-//String str_Humidity = "";
 const char* serverHumidity = "http://192.168.178.26/Humidity";
 
-//String str_Temperature = "";
 const char* serverTemperature = "http://192.168.178.26/Temperature";
 
 const char* serverSend_emergency = "http://192.168.178.26/emergency";
 
 const char* serverSend_no_emergency = "http://192.168.178.26/no-emergency";
+
+//Smartphone
+
+// String Host_IP = "192.168.43.68";
+
+// const char* serverDate = "http://192.168.43.68/Date";
+
+// const char* serverTime = "http://192.168.43.68/Time";
+
+// const char* serverStatus = "http://192.168.43.68/Status";
+
+// const char* serverHumidity = "http://192.168.43.68/Humidity";
+
+// const char* serverTemperature = "http://192.168.43.68/Temperature";
+
+// const char* serverSend_emergency = "http://192.168.43.68/emergency";
+
+// const char* serverSend_no_emergency = "http://192.168.43.68/no-emergency";
 
 int *web_status = nullptr;
 
