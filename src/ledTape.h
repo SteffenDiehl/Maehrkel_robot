@@ -1,5 +1,6 @@
 #include <FastLED.h>
 
+
 // Define the number of LEDs in the strip
 #define NUM_LEDS 60 //52 LEDs
 

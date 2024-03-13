@@ -4,6 +4,7 @@
 #include <HTTPClient.h>
 #include <Wire.h>
 
+
 const char* ssid = "DiehlWithIt";   //"JustDiehlWithIt";
 const char* password = "DiehlWithIt"; //"DiehlWithIt09";
 

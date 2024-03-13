@@ -1,5 +1,6 @@
 #include <Arduino.h>
 
+
 const int cut_pin = 12;
 
 void setup_cut() {

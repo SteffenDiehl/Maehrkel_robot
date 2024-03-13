@@ -1,5 +1,6 @@
 #include <Arduino.h>
 
+
 const int analogChargePin = 34; // Analog pin on ESP32
 int *chargeState = nullptr;
 
