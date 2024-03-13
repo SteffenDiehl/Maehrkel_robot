@@ -14,10 +14,10 @@ void get_safety(bool *s_emergency){
     if (not digitalRead(lift))// remove not later
     {
         *s_emergency = false;
-        Serial.println("not ok");
+        //Serial.println("not ok");
     }
     else{
         *s_emergency = true;
-        Serial.println("ok");
+        //Serial.println("ok");
     }
 }

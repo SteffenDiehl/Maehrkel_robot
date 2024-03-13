@@ -6,14 +6,9 @@
 
 const char* ssid = "DiehlWithIt";   //"JustDiehlWithIt";
 const char* password = "DiehlWithIt"; //"DiehlWithIt09";
-//Fritzbox
-//IPAddress staticIP (192, 168, 178, 27); // Die gewünschte IP-Adresse //IP-Smartphone 192, 168, 43, 68 // IP-Fritzbox 192, 168, 178, 27
-//IPAddress gateway(192, 168, 178, 1);    // Das Gateway
 
-//Smartphone
 IPAddress staticIP (192, 168, 43, 56); // Die gewünschte IP-Adresse //IP-Smartphone 192, 168, 43, 68 // IP-Fritzbox 192, 168, 178, 27
-IPAddress gateway(192, 168, 43, 1);
-
+IPAddress gateway(192, 168, 43, 1);    // Das Gateway
 IPAddress subnet(255, 255, 255, 0);   // Die Subnetzmaske
 IPAddress dns(8, 8, 8, 8);
 
@@ -45,7 +40,7 @@ IPAddress dns(8, 8, 8, 8);
 // const char* serverSend_stop = "http://192.168.178.26/stop";
 
 //Smartphone
-String Host_IP = "192.168.43.55";
+String Host_IP = "192.168.43.55";  //"192.168.178.26";
 
 //String Date = "";
 const char* serverDate = "http://192.168.43.55/Date";
@@ -86,8 +81,8 @@ String httpGETRequest(const char* server_request) {
   String payload = ""; // Initialize payload as an empty string
   
   if (httpResponseCode == HTTP_CODE_OK) {
-    Serial.print("HTTP Response code: ");
-    Serial.println(httpResponseCode);
+    // Serial.print("HTTP Response code: ");
+    // Serial.println(httpResponseCode);
     payload = http.getString();
   }
   else if (server_request == serverStatus)
@@ -96,8 +91,8 @@ String httpGETRequest(const char* server_request) {
     }
   else
   {
-    Serial.print("Error code: ");
-    Serial.println(httpResponseCode);
+    // Serial.print("Error code: ");
+    // Serial.println(httpResponseCode);
     payload = "Error"; // You can set payload to some default value on error
   }
   // Free resources
@@ -110,12 +105,12 @@ void setup_wifi() {
   // Initialize SPIFFS
   #ifdef ESP32
     if(!SPIFFS.begin(true)){
-      Serial.println("An Error has occurred while mounting SPIFFS");
+      //Serial.println("An Error has occurred while mounting SPIFFS");
       return;
     }
   #else
     if(!SPIFFS.begin()){
-      Serial.println("An Error has occurred while mounting SPIFFS");
+      //Serial.println("An Error has occurred while mounting SPIFFS");
       return;
     }
   #endif
@@ -123,12 +118,12 @@ void setup_wifi() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   if (WiFi.waitForConnectResult() != WL_CONNECTED) {
-    Serial.println("WiFi Failed!");
+    //Serial.println("WiFi Failed!");
     return;
   }
   WiFi.config(staticIP, gateway, subnet, dns);
-  Serial.print("IP Address: ");
-  Serial.println(WiFi.localIP());
+  // Serial.print("IP Address: ");
+  // Serial.println(WiFi.localIP());
 }
 
 void get_data(String *cDate, String *cTime, int *cStatus, String *cHumidity, String *cTemperature) {
@@ -143,7 +138,7 @@ void get_data(String *cDate, String *cTime, int *cStatus, String *cHumidity, Str
     // save the last HTTP GET Request
   }
   else {
-    Serial.println("WiFi Disconnected");
+    //Serial.println("WiFi Disconnected");
   }
 }
 
@@ -158,7 +153,7 @@ void send_emergency(bool emergency) {
     }
   }
   else {
-    Serial.println("WiFi Disconnected");
+    //Serial.println("WiFi Disconnected");
   }
 }
 
@@ -167,7 +162,7 @@ void send_start() {
       httpGETRequest(serverSend_start);
   }
   else {
-    Serial.println("WiFi Disconnected");
+    //Serial.println("WiFi Disconnected");
   }
 }
 
@@ -176,6 +171,6 @@ void send_stop() {
       httpGETRequest(serverSend_stop);
   }
   else {
-    Serial.println("WiFi Disconnected");
+    //Serial.println("WiFi Disconnected");
   }
 }

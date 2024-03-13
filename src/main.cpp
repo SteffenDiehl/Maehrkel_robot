@@ -12,10 +12,10 @@
 #include <boundary.h>
 #include <buttons.h>
 
-String current_Date;
-String current_Time;
-String current_Humidity;
-String current_Temperature;
+String current_Date = "NULL";
+String current_Time = "NULL";
+String current_Humidity  = "NULL";
+String current_Temperature = "NULL";
 
 int Status = 2; // 0 == "RUN", 1 ==  "GO HOME", 2 == "STOP"
 int led_status = 0;
@@ -28,7 +28,7 @@ bool state_boundry = false;
 void setup(){
     Serial.begin(115200);
     setup_wifi();
-    //setup_distance();
+    setup_distance();
     setup_display();
     setup_drive();
     setup_safety();
@@ -36,7 +36,7 @@ void setup(){
     setup_led();
     setup_boundary();
     setup_charge(&current_chargeState);
-    //setup_buttons();
+    setup_buttons();
 }
 
 void loop(){
@@ -44,7 +44,6 @@ void loop(){
     send_emergency(state_emergency);
     get_data(&current_Date, &current_Time, &Status, &current_Humidity, &current_Temperature);
     //get_distance(&current_distance);
-    display_output(current_Date, current_Time, Status, current_Humidity, current_Temperature);
     get_boundary(&state_boundry);
     check_charge();
     //check_buttons();
@@ -53,18 +52,20 @@ void loop(){
         led_on(Status);
         led_status = Status;
     }
+    // display_output(&current_Date, &current_Time, &Status, &current_Humidity, &current_Temperature);//current_Date, current_Time, Status, current_Humidity, current_Temperature
     
     if (Status == 0){
         cut_start();
-        driving(current_distance, state_boundry);
+        driving(current_distance, state_boundry, Status);
     }
     else if (Status == 1){
-        driving(current_distance, state_boundry);
+        driving(current_distance, state_boundry, Status);
         cut_stop();
     }
     else{
+        drive_status = 0;
         drive_stop();
         cut_stop();
     }
-    delay(200);
+    delay(500);
 }

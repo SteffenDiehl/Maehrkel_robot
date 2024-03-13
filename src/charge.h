@@ -10,8 +10,8 @@ void setup_charge(int *c_chargestate) {
 
 void check_charge() {
   int analogValue = analogRead(analogChargePin);
-  Serial.print("analog Charge: ");
-  Serial.println(analogRead(analogChargePin));
+  // Serial.print("analog Charge: ");
+  // Serial.println(analogRead(analogChargePin));
   if (analogValue < 500) { // Example threshold values, adjust as needed
     *chargeState = 0;
   } else if (analogValue < 1500) {

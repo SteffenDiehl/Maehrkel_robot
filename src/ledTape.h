@@ -1,7 +1,7 @@
 #include <FastLED.h>
 
 // Define the number of LEDs in the strip
-#define NUM_LEDS 52 //52 LEDs
+#define NUM_LEDS 60 //52 LEDs
 
 // Define the pin to which the data line is connected
 #define DATA_PIN 13
