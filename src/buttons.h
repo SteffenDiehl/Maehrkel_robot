@@ -11,12 +11,14 @@ void setup_buttons() {
 }
 
 void check_buttons(){
-    if (digitalRead(start_button))
+    if (not digitalRead(start_button))
     {
         send_start();
+        Serial.println("start");
     }
-    if (digitalRead(stop_button))
+    if (not digitalRead(stop_button))
     {
         send_stop();
+        Serial.println("stop");
     }
 }

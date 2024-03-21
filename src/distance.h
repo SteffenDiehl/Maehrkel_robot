@@ -9,8 +9,8 @@ const int sensPin = 5;
 // const int IO_Pin = 2;
 
 int sens_time = 0;
-int sens_timing = 500; //0,5s
-int sens_timeout = 2000; //0,5s
+int sens_timing = 400; //0,5s
+int sens_timeout = 500; //0,5s
 
 void setup_distance() { // Starts the serial communication
   //pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
@@ -34,6 +34,7 @@ void get_distance(bool *c_distance) {
     if (millis() >= (sens_time + sens_timing))
     {
       *c_distance = true;
+      Serial.println("Sensor an");
     }
     else{
       *c_distance = false;

@@ -2,10 +2,10 @@
 
 
 //PWM Outputs
-const int pwm_pin_forward_L = 4;
-const int pwm_pin_backward_L = 33;
-const int pwm_pin_forward_R = 16;
-const int pwm_pin_backward_R = 15;
+const int pwm_pin_forward_L = 33;
+const int pwm_pin_backward_L = 4;
+const int pwm_pin_forward_R = 15;
+const int pwm_pin_backward_R = 16;
 //Const Outputs
 // const int forward_L = 25;
 // const int backward_L = 26;
@@ -109,37 +109,37 @@ void drive_stop() {
 }
 
 void driving(bool drive_distance, bool drive_boundary, int state){
-    // if (drive_distance or drive_boundary)        {
-    //         drive_status = 1;
-    //         drive_timer = millis();
-    //     }
-    //     if (drive_status == 0){
-    //         drive_forward(pwm_F_L, pwm_F_R);
-    //     }
-    //     else if (drive_status == 1){
-    //         drive_backwards(pwm_B_L, pwm_B_R);
-    //         if (millis() >= (drive_timer + reverse_time))
-    //         {
-    //             drive_status = 2;
-    //             drive_timer = millis();
-    //         }
-            
-    //     }
-    //     else if (drive_status == 2){
-    //         drive_turn_left(pwm_B_L, pwm_F_R);
-    //         if (millis() >= (drive_timer + turn_time))
-    //         {
-    //             drive_status = 0;
-    //         }
-    //     }
-        if (state == 0)
-        {
+    if (drive_distance or drive_boundary)        {
+            drive_status = 1;
+            drive_timer = millis();
+        }
+        if (drive_status == 0){
             drive_forward(pwm_F_L, pwm_F_R);
         }
-        else if (state == 1)
-        {
+        else if (drive_status == 1){
             drive_backwards(pwm_B_L, pwm_B_R);
+            if (millis() >= (drive_timer + reverse_time))
+            {
+                drive_status = 2;
+                drive_timer = millis();
+            }
+            
         }
+        else if (drive_status == 2){
+            drive_turn_left(pwm_B_L, pwm_F_R);
+            if (millis() >= (drive_timer + turn_time))
+            {
+                drive_status = 0;
+            }
+        }
+        // if (state == 0)
+        // {
+        //     drive_forward(pwm_F_L, pwm_F_R);
+        // }
+        // else if (state == 1)
+        // {
+        //     drive_backwards(pwm_B_L, pwm_B_R);
+        // }
         else{
             drive_stop();
         }

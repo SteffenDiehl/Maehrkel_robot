@@ -63,9 +63,9 @@ const char* serverSend_emergency = "http://192.168.43.55/emergency";
 
 const char* serverSend_no_emergency = "http://192.168.43.55/no-emergency";
 
-const char* serverSend_start = "http://192.168.43.55/start";
+const char* serverSend_start = "http://192.168.43.55/startnow";
 
-const char* serverSend_stop = "http://192.168.43.55/stop";
+const char* serverSend_stop = "http://192.168.43.55/stopnow";
 
 int *web_status = nullptr;
 

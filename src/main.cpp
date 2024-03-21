@@ -44,10 +44,10 @@ void loop(){
     get_safety(&state_emergency);
     send_emergency(state_emergency);
     get_data(&current_Date, &current_Time, &Status, &current_Humidity, &current_Temperature);
-    //get_distance(&current_distance);
+    get_distance(&current_distance);
     get_boundary(&state_boundry);
     check_charge();
-    //check_buttons();
+    check_buttons();
     if (led_status != Status)
     {
         led_on(Status);
@@ -68,5 +68,5 @@ void loop(){
         drive_stop();
         cut_stop();
     }
-    delay(500);
+    delay(100);
 }
